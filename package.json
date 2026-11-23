@@ -1,0 +1,29 @@
+{
+  "name": "@modelpricing/llm-pricing-benchmarks",
+  "version": "1.4.0",
+  "description": "Standardized, schema-validated LLM API pricing, prompt caching rates, context windows, and verified coding benchmarks.",
+  "main": "data/models.json",
+  "scripts": {
+    "validate": "npx --yes ajv-cli validate -s schemas/catalog.schema.json -d data/models.json",
+    "validate:all": "npx --yes ajv-cli validate -s schemas/catalog.schema.json -d data/models.json && npx --yes ajv-cli validate -s schemas/model.schema.json -d data/models.json",
+    "test": "node -e \"const data = require('./data/models.json'); console.log('Loaded ' + data.length + ' models successfully');\""
+  },
+  "keywords": [
+    "llm",
+    "pricing",
+    "benchmarks",
+    "openai",
+    "anthropic",
+    "deepseek",
+    "gemini",
+    "prompt-caching",
+    "token-calculator"
+  ],
+  "author": "ModelPricing.xyz Team (https://modelpricing.xyz)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/modelpricing/llm-pricing-benchmarks.git"
+  },
+  "homepage": "https://modelpricing.xyz"
+}

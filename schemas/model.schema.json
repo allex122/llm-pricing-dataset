@@ -1,0 +1,136 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "LLMModelSpec",
+  "type": ["array", "object"],
+  "items": {
+    "type": "object",
+    "required": [
+      "id",
+      "name",
+      "provider",
+      "category",
+      "inputPricePerMillion",
+      "outputPricePerMillion",
+      "contextWindow",
+      "maxOutputTokens",
+      "description",
+      "bestFor"
+    ],
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[a-z0-9-]+$"
+      },
+      "name": {
+        "type": "string"
+      },
+      "provider": {
+        "type": "string",
+        "enum": ["OpenAI", "Anthropic", "Google", "DeepSeek", "Meta", "xAI", "Mistral", "Alibaba"]
+      },
+      "category": {
+        "type": "string",
+        "enum": ["Flagship", "Reasoning", "Fast & Cheap", "Coding"]
+      },
+      "inputPricePerMillion": {
+        "type": "number",
+        "minimum": 0
+      },
+      "outputPricePerMillion": {
+        "type": "number",
+        "minimum": 0
+      },
+      "cachedInputPricePerMillion": {
+        "type": ["number", "null"],
+        "minimum": 0
+      },
+      "contextWindow": {
+        "type": "integer",
+        "minimum": 1000
+      },
+      "maxOutputTokens": {
+        "type": "integer",
+        "minimum": 1000
+      },
+      "officialSourceUrl": {
+        "type": "string"
+      },
+      "mmluScore": {
+        "type": ["number", "null"]
+      },
+      "codingBenchmark": {
+        "type": ["string", "null"]
+      },
+      "description": {
+        "type": "string"
+      },
+      "bestFor": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "provider",
+    "category",
+    "inputPricePerMillion",
+    "outputPricePerMillion",
+    "contextWindow",
+    "maxOutputTokens",
+    "description",
+    "bestFor"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "name": {
+      "type": "string"
+    },
+    "provider": {
+      "type": "string",
+      "enum": ["OpenAI", "Anthropic", "Google", "DeepSeek", "Meta", "xAI", "Mistral", "Alibaba"]
+    },
+    "category": {
+      "type": "string",
+      "enum": ["Flagship", "Reasoning", "Fast & Cheap", "Coding"]
+    },
+    "inputPricePerMillion": {
+      "type": "number",
+      "minimum": 0
+    },
+    "outputPricePerMillion": {
+      "type": "number",
+      "minimum": 0
+    },
+    "cachedInputPricePerMillion": {
+      "type": ["number", "null"],
+      "minimum": 0
+    },
+    "contextWindow": {
+      "type": "integer",
+      "minimum": 1000
+    },
+    "maxOutputTokens": {
+      "type": "integer",
+      "minimum": 1000
+    },
+    "officialSourceUrl": {
+      "type": "string"
+    },
+    "mmluScore": {
+      "type": ["number", "null"]
+    },
+    "codingBenchmark": {
+      "type": ["string", "null"]
+    },
+    "description": {
+      "type": "string"
+    },
+    "bestFor": {
+      "type": "string"
+    }
+  }
+}
