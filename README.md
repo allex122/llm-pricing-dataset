@@ -1,5 +1,6 @@
 # LLM Pricing & Benchmarks Open Dataset
 
+[![ModelPricing](https://modelpricing.xyz/api/badge)](https://modelpricing.xyz)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Dataset License: CC BY 4.0](https://img.shields.io/badge/Dataset-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![Model Count](https://img.shields.io/badge/Models-23%20Frontier-brightgreen.svg)](#dataset-schema)
@@ -64,7 +65,7 @@ import pandas as pd
 import requests
 
 # Fetch JSON directly from GitHub Raw or local repository
-url = "https://raw.githubusercontent.com/modelpricing/llm-pricing-benchmarks/main/data/models.json"
+url = "https://raw.githubusercontent.com/allex122/llm-pricing-dataset/main/data/models.json"
 response = requests.get(url)
 data = response.json()
 
@@ -128,17 +129,37 @@ console.log('Reasoning Models with Prompt Caching Discounts:');
 console.table(reasoningModels);
 ```
 
-### 3. cURL & jq
+### 3. Public JSON API & Live README Badges
 
-Query models on the command line using cURL and jq:
+Query live 2026 rates directly via our free, CORS-enabled public JSON API:
+
+```bash
+# Fetch all 23+ models
+curl -s https://modelpricing.xyz/api/pricing.json
+
+# Filter by provider or specific model
+curl -s "https://modelpricing.xyz/api/pricing.json?provider=anthropic"
+curl -s "https://modelpricing.xyz/api/pricing.json?model=gpt-5"
+```
+
+Embed live auto-updating SVG pricing badges in your own GitHub `README.md`:
+
+```markdown
+[![Claude 4.5 Sonnet](https://modelpricing.xyz/api/badge?model=claude-4-5-sonnet)](https://modelpricing.xyz)
+[![DeepSeek R1](https://modelpricing.xyz/api/badge?model=deepseek-r1)](https://modelpricing.xyz)
+```
+
+### 4. cURL & jq (Raw GitHub Files)
+
+Query the raw dataset files on the command line using cURL and jq:
 
 ```bash
 # Query all models with input prices under $1.00 per million tokens
-curl -s https://raw.githubusercontent.com/modelpricing/llm-pricing-benchmarks/main/data/models.json \
+curl -s https://raw.githubusercontent.com/allex122/llm-pricing-dataset/main/data/models.json \
   | jq '.[] | select(.inputPricePerMillion < 1.00) | {id: .id, name: .name, input: .inputPricePerMillion, output: .outputPricePerMillion}'
 
 # Extract CSV directly
-curl -s https://raw.githubusercontent.com/modelpricing/llm-pricing-benchmarks/main/data/models.csv | head -n 10
+curl -s https://raw.githubusercontent.com/allex122/llm-pricing-dataset/main/data/models.csv | head -n 10
 ```
 
 ---
